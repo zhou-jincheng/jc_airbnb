@@ -6,7 +6,6 @@ export const RightWrapper = styled.div`
   justify-content: flex-end;
   align-items: center;
   font-weight: 700;
-  font-size: 14px;
   margin-right: 20px;
   .operator {
     display: flex;
@@ -31,7 +30,8 @@ export const RightWrapper = styled.div`
     height: 42px;
     padding-left: 12px;
     padding-right: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid ${props => props.theme.color.borderColor};
     border-radius: 21px;
+    ${props => props.theme.mixins.boxShadow}
   }
 `
