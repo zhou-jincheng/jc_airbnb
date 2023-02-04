@@ -5,12 +5,12 @@ export const RightWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-weight: 700;
   margin-right: 20px;
+  color: ${props => props.theme.text.secondaryColor};
   .operator {
     display: flex;
     align-items: center;
-    color: ${props => props.theme.text.secondaryColor};
+    font-weight: 700;
     .btn {
       padding: 8px 15px;
       margin-right: -8px;
@@ -23,6 +23,7 @@ export const RightWrapper = styled.div`
     margin-right: 12px;
   }
   .profile {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,8 +31,38 @@ export const RightWrapper = styled.div`
     height: 42px;
     padding-left: 12px;
     padding-right: 8px;
+    cursor: pointer;
     border: 1px solid ${props => props.theme.color.borderColor};
     border-radius: 21px;
+    transition: box-shadow 200ms ease;
+    box-shadow: ${props => props.panelVisible ? '0 2px 4px rgba(0, 0, 0, .18)' : 'none'};
     ${props => props.theme.mixins.boxShadow}
+    .panel {
+      position: absolute;
+      right: 0;
+      top: 50px;
+      width: 240px;
+      box-shadow: 0 0 6px rgba(0, 0, 0, .18);
+      border-radius: 8px;
+      background-color: #fff;
+      .top, .bottom {
+        padding: 8px 0;
+      }
+      .top {
+        border-bottom: 1px solid ${props => props.theme.color.borderColor};
+        .register {
+          font-weight: 700;
+        }
+      }
+      .item {
+        height: 40px;
+        line-height: 40px;
+        padding: 0 12px;
+        cursor: pointer;
+        &:hover {
+          background-color: #f7f7f7;
+        }
+      }
+    }
   }
 `

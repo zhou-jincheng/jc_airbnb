@@ -2,7 +2,7 @@ const theme = {
   color: {
     primaryColor: '#ff385c',
     secondaryColor: '#00848a',
-    borderColor: '#ccc'
+    borderColor: '#ddd'
   },
   text: {
     primaryColor: '#484848',
