@@ -16,7 +16,7 @@ export const ItemWrapper = styled.div`
   }
   .desc {
     margin: 10px 0 5px;
-    color: #767676;
+    color: ${props => props.verifyColor};
     font-weight: 700;
   }
   .name {
@@ -32,7 +32,13 @@ export const ItemWrapper = styled.div`
     margin: 8px 0;
   }
   .info {
+    display: flex;
+    align-items: c;
     font-size: 12px;
     font-weight: 600;
+    .MuiRating-decimal {
+      margin-right: -2px;
+      color: ${props => props.theme.color.secondaryColor};
+    }
   }
 `

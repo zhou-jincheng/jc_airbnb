@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import React, { memo } from "react";
+import Rating from '@mui/material/Rating';
 import { ItemWrapper } from "./style";
 
 const RoomItem = memo((props) => {
   const { itemData } = props
   return (
-    <ItemWrapper>
+    <ItemWrapper verifyColor={itemData.verify_info.text_color || '#39576a'}>
       <div className="cover">
         <img src={itemData.picture_url} alt="" />
       </div>
@@ -13,9 +14,14 @@ const RoomItem = memo((props) => {
       <div className="name">{itemData.name}</div>
       <div className="price">￥{itemData.price}/晚</div>
       <div className="info">
-        <span className="start">*</span>
+        <Rating
+          value={itemData.star_rating ?? 5}
+          precision={0.1}
+          readOnly
+          sx={{ fontSize: '12px', marginRight: '2px' }}
+        />
         <span className="count">{itemData.reviews_count}</span>
-        <span className="centent">{itemData.bottom_info?.content}</span>
+        {itemData.bottom_info &&<span className="centent">·{itemData.bottom_info.content}</span>}
       </div>
     </ItemWrapper>
   );

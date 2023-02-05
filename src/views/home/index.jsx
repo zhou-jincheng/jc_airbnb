@@ -1,8 +1,8 @@
-import RoomItem from '@/components/room-item'
-import SectionHeader from '@/components/section-header'
 import { fetchGoodPriceDataAction } from '@/store/home'
 import React, { memo, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import SectionHeader from '@/components/section-header'
+import SectionRooms from '@/components/section-rooms'
 import HomeBanner from './c-cpns/home-banner'
 import { HomeWrapper } from './style'
 
@@ -21,17 +21,7 @@ const Home = memo(() => {
       <HomeBanner/>
       <div className="section">
         <SectionHeader title={goodPriceInfo.title} />
-        <div className='room-list'>
-          {
-            goodPriceInfo.list?.slice(0, 8).map(item => {
-              return (
-                <div key={item.id} className="list-item">
-                  <RoomItem itemData={item}/>
-                </div>
-              )
-            })
-          }
-        </div>
+        <SectionRooms roomList={goodPriceInfo.list}/>
       </div>
     </HomeWrapper>
   )
