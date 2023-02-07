@@ -6,3 +6,9 @@ export function getGoodPriceData() {
     url: '/home/goodprice'
   })
 }
+
+export function getHighScoreData() {
+  return jcRequest.get({
+    url: '/home/highscore'
+  })
+}
