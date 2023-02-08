@@ -6,7 +6,7 @@ export const RoomsWrapper = styled.div`
   flex-wrap: wrap;
   margin: 0 -8px;
   .list-item {
-    width: 25%;
+    width: ${props => props.roomWidth};
     padding: 8px;
   }
 `
