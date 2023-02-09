@@ -4,6 +4,7 @@ import { SectionV2Wrapper } from "./style";
 import SectionHeader from "@/components/section-header";
 import SectionTabs from "@/components/section-tabs";
 import SectionRooms from "@/components/section-rooms";
+import SectionFooter from "@/components/section-footer";
 
 const HomeSectionV2 = memo((props) => {
   const { infoData } = props
@@ -19,6 +20,7 @@ const HomeSectionV2 = memo((props) => {
       <SectionHeader title={infoData.title} subtitle={infoData.subtitle}/>
       <SectionTabs tabNames={tabNames} tabClick={name => handleCityChange(name)}/>
       <SectionRooms roomList={infoData.dest_list?.[cityName]} roomWidth="33.3333%"/>
+      <SectionFooter name={cityName}/>
     </SectionV2Wrapper>
   )
 })
