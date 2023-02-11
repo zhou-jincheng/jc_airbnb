@@ -25,3 +25,9 @@ export function getHotRecommendData() {
     url: '/home/hotrecommenddest'
   })
 }
+
+export function getLongForData() {
+  return jcRequest.get({
+    url: '/home/longfor'
+  })
+}

@@ -7,7 +7,7 @@ export const HeaderWrapper = styled.div`
     margin-bottom: 16px;
   }
   .subtitle {
-    margin-bottom: 20px;
+    margin-bottom: 4px;
     line-height: 24px;
   }
 
