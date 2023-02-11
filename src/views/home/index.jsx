@@ -7,6 +7,7 @@ import HomeSectionV1 from './c-cpns/home-section-v1'
 import HomeSectionV2 from './c-cpns/home-section-v2'
 import { isNotEmptyObj } from '@/utils'
 import HomeLongFor from './c-cpns/home-long-for'
+import HomeSectionV3 from './c-cpns/home-section-v3'
 
 const Home = memo(() => {
 
@@ -16,12 +17,14 @@ const Home = memo(() => {
     discountInfo,
     recommendInfo,
     longForInfo,
+    plusInfo,
   } = useSelector((state) => ({
     goodPriceInfo: state.home.goodPriceInfo,
     highScoreInfo: state.home.highScoreInfo,
     discountInfo: state.home.discountInfo,
     recommendInfo: state.home.recommendInfo,
     longForInfo: state.home.longForInfo,
+    plusInfo: state.home.plusInfo,
   }), shallowEqual)
   const dispatch = useDispatch()
   useEffect(() => {
@@ -39,6 +42,7 @@ const Home = memo(() => {
 
         { isNotEmptyObj(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} /> }
         { isNotEmptyObj(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} /> }
+        { isNotEmptyObj(plusInfo) && <HomeSectionV3 infoData={plusInfo} /> }
       </div>
     </HomeWrapper>
   )

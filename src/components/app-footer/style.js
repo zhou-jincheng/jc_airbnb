@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const FooterWrapper = styled.div`
   height: 317px;
+  margin-top: 30px;
   border-top: 1px solid ${props => props.theme.color.borderColor};
   .content {
     width: 1080px;

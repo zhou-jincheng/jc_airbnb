@@ -1,31 +1,33 @@
 import ScrollView from "@/base-ui/scroll-view";
-import LongForItem from "@/components/long-for-item";
+import RoomItem from "@/components/room-item";
+import SectionFooter from "@/components/section-footer";
 import SectionHeader from "@/components/section-header";
 import PropTypes from "prop-types";
 import React, { memo } from "react";
-import { LongForWrapper } from "./style";
+import { SectionV3Wrapper } from "./style";
 
-const HomeLongFor = memo((props) => {
+const HomeSectionV3 = memo((props) => {
   const { infoData } = props
 
   return (
-    <LongForWrapper>
+    <SectionV3Wrapper>
       <SectionHeader title={infoData.title} subtitle={infoData.subtitle}/>
       <div className="list">
         <ScrollView controlOffset="-6px">
           {
             infoData.list?.map(item => (
-              <LongForItem itemData={item} key={item.city}/>
+              <RoomItem key={item.id} itemData={item} itemWidth='20%' />
             ))
           }
         </ScrollView>
       </div>
-    </LongForWrapper>
+      <SectionFooter name={infoData.type}/>
+    </SectionV3Wrapper>
   );
 });
 
-HomeLongFor.propTypes = {
+HomeSectionV3.propTypes = {
   infoData: PropTypes.object
 };
 
-export default HomeLongFor;
+export default HomeSectionV3;

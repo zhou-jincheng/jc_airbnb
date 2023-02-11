@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 
 export const ItemWrapper = styled.div`
+  width: ${props => props.width || '100%'};
+  flex-shrink: 0;
+  padding: 0 8px;
   .cover {
     position: relative;
     padding-top: 66%;
@@ -16,7 +19,7 @@ export const ItemWrapper = styled.div`
   }
   .desc {
     margin: 10px 0 5px;
-    color: ${props => props.verifyColor};
+    color: ${props => props.verifyColor || '#39576a'};
     font-weight: 700;
   }
   .name {

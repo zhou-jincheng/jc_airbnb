@@ -1,9 +1,13 @@
+import React, { memo, useEffect, useRef, useState } from "react";
+import PropTypes from "prop-types";
+
+import { ViewWrapper } from "./style";
 import IconArrowLeft from "@/assets/svg/icon-arrow-left";
 import IconArrowRight from "@/assets/svg/icon-arrow-right";
-import React, { memo, useEffect, useRef, useState } from "react";
-import { ViewWrapper } from "./style";
 
 const ScrollView = memo((props) => {
+  const { controlOffset } = props
+
   const [index, setIndex] = useState(0)
   const [rightVisible, setRightVisible] = useState(false)
   const [leftVisible, setLeftVisible] = useState(false)
@@ -28,17 +32,17 @@ const ScrollView = memo((props) => {
   }
 
   return (
-    <ViewWrapper>
+    <ViewWrapper offset={controlOffset}>
       {
         leftVisible && (
-          <div className="left" onClick={() => controlClick(-1)}>
+          <div className="control left" onClick={() => controlClick(-1)}>
             <IconArrowLeft/>
           </div>
         )
       }
       {
         rightVisible && (
-          <div className="right" onClick={() => controlClick(1)}>
+          <div className="control right" onClick={() => controlClick(1)}>
             <IconArrowRight/>
           </div>
         )
@@ -51,5 +55,9 @@ const ScrollView = memo((props) => {
     </ViewWrapper>
   );
 });
+
+ScrollView.propTypes = {
+  controlOffset: PropTypes.string
+}
 
 export default ScrollView;

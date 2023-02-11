@@ -31,3 +31,9 @@ export function getLongForData() {
     url: '/home/longfor'
   })
 }
+
+export function getPlusData() {
+  return jcRequest.get({
+    url: '/home/plus'
+  })
+}
