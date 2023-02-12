@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
+import Demo from '@/views/demo'
 
 const Home = React.lazy(() => import('@/views/home'))
 const Detail = React.lazy(() => import('@/views/detail'))
@@ -21,7 +22,11 @@ const routes = [
   {
     path: '/entire',
     element: <Entire/>
-  }
+  },
+  {
+    path: '/demo',
+    element: <Demo/>
+  },
 ]
 
 export default routes

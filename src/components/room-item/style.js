@@ -5,6 +5,38 @@ export const ItemWrapper = styled.div`
   width: ${props => props.width || '100%'};
   flex-shrink: 0;
   padding: 0 8px;
+  .slider {
+    position: relative;
+    .control {
+      position: absolute;
+      z-index: 9;
+      width: 100%;
+      height: 100%;
+      .btn {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        height: 100%;
+        color: transparent;
+        &.right {
+          right: 0;
+        }
+      }
+    }
+    &:hover {
+      .btn {
+        color: #fff;
+        &.left {
+          background: linear-gradient(to right, rgba(0,0,0,.25) 0, transparent 100%);
+        }
+        &.right {
+          background: linear-gradient(to right, transparent 0, rgba(0,0,0,.25) 100%);
+        }
+      }
+    }
+  }
   .cover {
     position: relative;
     padding-top: 66%;
@@ -15,6 +47,7 @@ export const ItemWrapper = styled.div`
       top: 0;
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
   .desc {
@@ -36,7 +69,7 @@ export const ItemWrapper = styled.div`
   }
   .info {
     display: flex;
-    align-items: c;
+    align-items: center;
     font-size: 12px;
     font-weight: 600;
     .MuiRating-decimal {

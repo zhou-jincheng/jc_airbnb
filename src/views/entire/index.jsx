@@ -1,10 +1,16 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import EntireFilter from './c-cpns/entire-filter'
 import EntirePigination from './c-cpns/entire-pigination'
 import EntireRooms from './c-cpns/entire-rooms'
 import { EntireWrapper } from './style'
+import { fetchRoomListAction } from '@/store/entire/actionCreators'
 
 const Entire = memo(() => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchRoomListAction(0))
+  }, [dispatch])
   return (
     <EntireWrapper>
       <EntireFilter/>
