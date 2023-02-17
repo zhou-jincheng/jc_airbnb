@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 
 export const PicturesWrapper = styled.div`
+  position: relative;
   .pictures {
     display: flex;
     height: 600px;
@@ -61,5 +62,14 @@ export const PicturesWrapper = styled.div`
         }
       }
     }
+  }
+  >.btn {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 6px 15px;
+    background-color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
   }
 `
