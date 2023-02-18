@@ -54,6 +54,15 @@ export const BrowserWrapper = styled.div`
         height: 100%;
         margin: 0 auto;
         user-select: none;
+        &.image-enter {
+          transform: ${props => props.isNext ? 'translateX(100%)' : 'translateX(-100%)'};
+          opacity: 0;
+        }
+        &.image-enter-active {
+          transition: transform 200ms ease;
+          transform: translateX(0);
+          opacity: 1;
+        }
       }
     }
   }

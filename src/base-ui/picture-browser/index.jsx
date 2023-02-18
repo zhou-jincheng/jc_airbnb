@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import Indicator from '../indicator'
 import { BrowserWrapper } from './style'
 import IconArrowLeft from '@/assets/svg/icon-arrow-left'
@@ -7,14 +7,27 @@ import IconArrowRight from '@/assets/svg/icon-arrow-right'
 import IconClose from '@/assets/svg/icon-close'
 import IconTriangleArrowBottom from '@/assets/svg/icon-triangle-arrow-bottom'
 import IconTriangleArrowTop from '@/assets/svg/icon-triangle-arrow-top'
+import { CSSTransition, SwitchTransition } from 'react-transition-group'
 
 const PictureBrowser = memo((props) => {
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [])
+
+  /* 关闭图片浏览器 */
   const { close, pictureUrls = [] } = props
   function handleClick() {
     close && close()
   }
 
+  /* 控制中部图片切换动画方向 */
+  const [isNext, setIsNext] = useState(false)
+
+  /* 底部浏览器切换图片 */
   const length = pictureUrls.length
   const [selectedIndex, setSelectedIndex] = useState(0)
   function handlePictureChange(num) {
@@ -22,15 +35,17 @@ const PictureBrowser = memo((props) => {
     if (newIndex < 0) newIndex = length -1
     if (newIndex > length -1) newIndex = 0
     setSelectedIndex(newIndex)
+    setIsNext(newIndex > selectedIndex)
   }
 
+  /* 隐藏底部浏览器 */
   const [isHide, setIsHide] = useState(false)
   function handleHideToggle() {
     setIsHide(!isHide)
   }
 
   return (
-    <BrowserWrapper hide={isHide}>
+    <BrowserWrapper hide={isHide} isNext={isNext}>
       <div className="top">
         <div className="btn-close" onClick={handleClick}>
           <IconClose/>
@@ -46,7 +61,14 @@ const PictureBrowser = memo((props) => {
           </div>
         </div>
         <div className="picture">
-          <img src={pictureUrls[selectedIndex]} alt="" />
+          <SwitchTransition mode='in-out'>
+            <CSSTransition
+              key={pictureUrls[selectedIndex]}
+              timeout={200}
+              classNames="image">
+              <img src={pictureUrls[selectedIndex]} alt="" />
+            </CSSTransition>
+          </SwitchTransition>
         </div>
       </div>
       <div className="preview">
