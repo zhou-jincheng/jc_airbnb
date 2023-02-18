@@ -55,13 +55,20 @@ export const BrowserWrapper = styled.div`
         margin: 0 auto;
         user-select: none;
         &.image-enter {
-          transform: ${props => props.isNext ? 'translateX(100%)' : 'translateX(-100%)'};
+          transform: translateX(${props => props.isNext ? '100%' : '-100%'});
           opacity: 0;
         }
         &.image-enter-active {
-          transition: transform 200ms ease;
+          transition: all 200ms ease;
           transform: translateX(0);
           opacity: 1;
+        }
+        &.image-exit {
+          opacity: 1;
+        }
+        &.image-exit-active {
+          opacity: 0;
+          transition: opacity 200ms ease;
         }
       }
     }

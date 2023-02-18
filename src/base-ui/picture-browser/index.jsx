@@ -76,8 +76,8 @@ const PictureBrowser = memo((props) => {
           <div className="desc">
             <div>{`${selectedIndex + 1}/${length}:room apartment 图片${selectedIndex + 1}`}</div>
             <div>
-              <span>隐藏照片列表</span>
               <span className="toggle" onClick={handleHideToggle}>
+                <span>{isHide ? '显示' : '隐藏'}照片列表</span>
                 { isHide ? <IconTriangleArrowTop/> : <IconTriangleArrowBottom/>}
               </span>
             </div>
