@@ -8,6 +8,7 @@ import IconClose from '@/assets/svg/icon-close'
 import IconTriangleArrowBottom from '@/assets/svg/icon-triangle-arrow-bottom'
 import IconTriangleArrowTop from '@/assets/svg/icon-triangle-arrow-top'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
+import classNames from 'classnames'
 
 const PictureBrowser = memo((props) => {
 
@@ -35,7 +36,14 @@ const PictureBrowser = memo((props) => {
     if (newIndex < 0) newIndex = length -1
     if (newIndex > length -1) newIndex = 0
     setSelectedIndex(newIndex)
-    setIsNext(newIndex > selectedIndex)
+    setIsNext(num > 0)
+  }
+
+  /* 底部浏览器图片点击处理 */
+  function handleItemClick(index) {
+    if (index === selectedIndex) return
+    setSelectedIndex(index)
+    setIsNext(index > selectedIndex)
   }
 
   /* 隐藏底部浏览器 */
@@ -85,9 +93,9 @@ const PictureBrowser = memo((props) => {
           <div className="list">
             <Indicator selectedIndex={selectedIndex}>
               {
-                pictureUrls.map(item => (
-                  <div key={item} className="item">
-                    <img src={item} alt="" />
+                pictureUrls.map((item, index) => (
+                  <div key={item} className="item" onClick={() => handleItemClick(index)}>
+                    <img src={item} alt="" className={classNames({active: index === selectedIndex})} />
                   </div>
                 ))
               }

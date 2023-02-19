@@ -97,6 +97,10 @@ export const BrowserWrapper = styled.div`
           cursor: pointer;
           img {
             height: 67px;
+            opacity: 0.5;
+            &.active {
+              opacity: 1;
+            }
           }
         }
       }
