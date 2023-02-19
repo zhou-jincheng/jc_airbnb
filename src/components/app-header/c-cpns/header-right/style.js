@@ -6,7 +6,7 @@ export const RightWrapper = styled.div`
   justify-content: flex-end;
   align-items: center;
   margin-right: 20px;
-  color: ${props => props.theme.text.secondaryColor};
+  color: ${props => props.theme.isAlpha ? '#fff' : props.theme.text.secondaryColor};
   .operator {
     display: flex;
     align-items: center;
@@ -17,7 +17,7 @@ export const RightWrapper = styled.div`
       border-radius: 16px;
       cursor: pointer;
       &:hover {
-        background-color: #eee;
+        background-color: rgba(255, 255, 255, ${props => props.theme.isAlpha ? .3 : .9});
       }
     }
     margin-right: 12px;
@@ -31,9 +31,11 @@ export const RightWrapper = styled.div`
     height: 42px;
     padding-left: 12px;
     padding-right: 8px;
+    color: #717171;
     cursor: pointer;
     border: 1px solid ${props => props.theme.color.borderColor};
     border-radius: 21px;
+    background-color: #fff;
     transition: box-shadow 200ms ease;
     box-shadow: ${props => props.panelVisible ? '0 2px 4px rgba(0, 0, 0, .18)' : 'none'};
     ${props => props.theme.mixins.boxShadow}

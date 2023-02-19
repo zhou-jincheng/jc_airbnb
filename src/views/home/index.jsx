@@ -8,6 +8,7 @@ import HomeSectionV2 from './c-cpns/home-section-v2'
 import { isNotEmptyObj } from '@/utils'
 import HomeLongFor from './c-cpns/home-long-for'
 import HomeSectionV3 from './c-cpns/home-section-v3'
+import { changeHeaderConfigAction } from '@/store/main'
 
 const Home = memo(() => {
 
@@ -26,9 +27,11 @@ const Home = memo(() => {
     longForInfo: state.home.longForInfo,
     plusInfo: state.home.plusInfo,
   }), shallowEqual)
+
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchGoodPriceDataAction())
+    dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: true }))
   }, [dispatch])
 
   return (

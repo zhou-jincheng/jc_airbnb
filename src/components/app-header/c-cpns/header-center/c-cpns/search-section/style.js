@@ -2,10 +2,6 @@ import styled from "styled-components";
 
 
 export const SectionWrapper = styled.div`
-  position: absolute;
-  top: 60px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   width: 850px;
   height: 66px;
